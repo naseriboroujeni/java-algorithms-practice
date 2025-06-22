@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class EmailDomainPopularity {
@@ -14,9 +15,11 @@ public class EmailDomainPopularity {
                 "ali@GMAIL.com", "sina@yahoo.com", "fake.email.com", "nina@outlook.com"
         );
 
+        Predicate<String> isValidEmail = email -> email != null && email.chars().filter(c -> c == '@').count() == 1;
+
         List<String> validEmails = emails.stream()
+                .filter(isValidEmail)
                 .map(String::toLowerCase)
-                .filter(email -> email.split("@").length == 2)
                 .distinct()
                 .toList();
 
