@@ -23,7 +23,7 @@ public class WordFrequencyByLength {
                 .collect(Collectors.groupingBy(
                         String::length,
                         Collectors.mapping(
-                                word -> word,
+                                Function.identity(),
                                 Collectors.collectingAndThen(
                                         Collectors.groupingBy(
                                                 Function.identity(),

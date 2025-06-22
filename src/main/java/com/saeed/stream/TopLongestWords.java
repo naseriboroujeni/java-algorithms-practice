@@ -14,7 +14,8 @@ public class TopLongestWords {
 
         List<String> result = words.stream()
                 .sorted((word1, word2) -> Integer.compare(word2.length(), word1.length()))
-                .limit(3).collect(Collectors.collectingAndThen(
+                .limit(3)
+                .collect(Collectors.collectingAndThen(
                         Collectors.toList(),
                         Collections::unmodifiableList
                 ));
