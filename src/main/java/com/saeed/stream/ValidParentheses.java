@@ -10,6 +10,9 @@ public class ValidParentheses {
             if (s.charAt(i) == '{' || s.charAt(i) == '(' || s.charAt(i) == '[') {
                 bracketStack.push(s.charAt(i));
             } else if (s.charAt(i) == '}' || s.charAt(i) == ')' || s.charAt(i) == ']') {
+                if (bracketStack.isEmpty()) {
+                    return false;
+                }
                 char temp = bracketStack.pop();
                 if ((s.charAt(i) == '}' && temp != '{')
                         || (s.charAt(i) == ')' && temp != '(')
